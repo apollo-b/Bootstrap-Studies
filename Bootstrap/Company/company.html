@@ -11,6 +11,27 @@
     .bg-grey {
       background-color: #f6f6f6;
     }
+    .navbar {
+      margin-bottom: 0;
+      background-color: #f4511e;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+    }
+    .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+    }
+    .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #f4511e !important;
+      background-color: #fff !important;
+    }
+    .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+    }
     .jumbotron {
       background-color: #f4511e; /* Orange */
       color: #ffffff;
@@ -25,6 +46,7 @@
       font-size: 50px;
     }
     .logo {
+      color: #f4511e;
       font-size: 200px;
     }
     .thumbnail {
@@ -95,6 +117,11 @@
       background-color: #f4511e;
       color: #fff;
     }
+    footer .glyphicon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #f4511e;
+    }
     @media screen and (max-width: 768px) {
       .col-sm-4 {
         text-align: center;
@@ -103,7 +130,29 @@
     }
   </style>
 </head>
-<body>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#services">SERVICES</a></li>
+        <li><a href="#portfolio">PORTFOLIO</a></li>
+        <li><a href="#pricing">PRICING</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 
 <div class="jumbotron text-center">
   <h1>Company</h1>
@@ -119,7 +168,7 @@
 </div>
 
 <!-- Container (About Section) -->
-<div class="container-fluid">
+<div id="about" class="container-fluid">
   <div class="row">
     <div class="col-sm-8">
       <h2>About Company Page</h2>
@@ -147,7 +196,7 @@
 </div>
 
 <!-- Container (Services Section) -->
-<div class="container-fluid text-center">
+<div id="services" class="container-fluid text-center">
   <h2>SERVICES</h2>
   <h4>What we offer</h4>
   <br>
@@ -204,7 +253,7 @@
 </div>
 
 <!-- Container (Portfolio Section) -->
-<div class="container-fluid text-center bg-grey">
+<div id="portfolio" class="container-fluid text-center bg-grey">
   <h2>Portfolio</h2>
   <h4>What we have created</h4>
   <div class="row text-center">
@@ -272,7 +321,7 @@
 </div>
 
 <!-- Container (Pricing Section) -->
-<div class="container-fluid">
+<div id="pricing" class="container-fluid">
   <div class="text-center">
     <h2>Pricing</h2>
     <h4>Choose a payment plan that works for you</h4>
@@ -338,5 +387,82 @@
   </div>
 </div>
 
+<!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid bg-grey">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
+    </div>
+    <div class="col-sm-7">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="email" placeholder="Email" type="email" required>
+        </div>
+        <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+        <div class="row">
+          <div class="col-sm-12 form-group">
+            <button class="btn btn-default pull-right" type="submit">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Google Maps -->
+<div id="googleMap" style="height:400px;width:100%"></div>
+<script>
+  function myMap() {
+    var myCenter = new google.maps.LatLng(41.878114, -87.629798);
+    var mapProp = {center:myCenter, zoom:12, scrollwheel:false,
+      draggable:false, mapTypeId:google.maps.MapTypeId.ROADMAP};
+    var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    var marker = new google.maps.Marker({position:myCenter});
+    marker.setMap(map);
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLpYNbsYrECVl4g4zy-QAy1b8owMA8NXE&callback=myMap"></script>
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
+</footer>
+
+<script>
+  $(document).ready(function(){
+    // Add smooth scrolling to all links in navbar + footer links
+    $(".navbar a, footer a[href='#myPage']").on('click', function(event){
+
+      //Make sure this.hash has a value before overriding default behavior
+      if (this.hash != "") {
+
+        // Prevent default anchor click behavior
+        event.preventDefault();
+
+        // Store hash
+        var hash = this.hash;
+
+        // Using jQuery's animate() method to add smoooth page scrolling
+        // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 900, function() {
+
+          // Add hash (#) to URL when done scrolling (default click behavior)
+          window.location.hash = hash;
+        });
+      } // End if
+    });
+  })
+</script>
 </body>
 </html>
