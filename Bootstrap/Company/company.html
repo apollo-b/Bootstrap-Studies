@@ -4,10 +4,38 @@
   <title>Bootstrap Theme Company</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.min.css">
   <script src="../../../jquery/jquery-3.2.1.min.js"></script>
   <script src="../../../bootstrap/js/bootstrap.min.js"></script>
   <style>
+    body {
+      font: 400 15px Lato, san-serif;
+      line-height: 1.8;
+      color: #818181;
+    }
+    h2 {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #303030;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+    h3 {
+      font-size: 19px;
+      line-height: 1.375em;
+      color: #303030;
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
+    h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      color: #303030;
+      font-weight: 400;
+      margin-bottom: 30px;
+    }
     .bg-grey {
       background-color: #f6f6f6;
     }
@@ -20,6 +48,7 @@
       line-height: 1.42857143 !important;
       letter-spacing: 4px;
       border-radius: 0;
+        font-family: Montserrat, sans-serif;
     }
     .navbar li a, .navbar .navbar-brand {
       color: #fff !important;
@@ -34,8 +63,9 @@
     }
     .jumbotron {
       background-color: #f4511e; /* Orange */
-      color: #ffffff;
+      color: #fff;
       padding: 100px 25px;
+      font-family: Montserrat, sans-serif;
     }
     .container-fluid {
       padding: 60px 50px;
@@ -122,10 +152,49 @@
       margin-bottom: 20px;
       color: #f4511e;
     }
+    .slideanim {visibility:hidden;}
+    .slide {
+      /* The name of the animation */
+      animation-name: slide;
+      -webkit-animation-name: slide;
+      /* The duration of the animation */
+      animation-duration: 1s;
+      -webkit-animation-duration: 1s;
+      /* Make the element visible */
+      visibility: visible;
+    }
+
+    /* Go from 0% to 100% opacity (see-through) and specify the percentage
+    from when to slide in the element along the Y-axis */
+    @keyframes slide {
+      0% {
+        opacity: 0;
+        transform: translateY(70%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0%);
+      }
+    }
+    @-webkit-keyframes slide {
+      0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+      }
+      100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+      }
+    }
     @media screen and (max-width: 768px) {
       .col-sm-4 {
         text-align: center;
         margin-left: 25px 0;
+      }
+    }
+    @media screen and (max-width: 480px) {
+      .logo {
+          font-size: 150px;
       }
     }
   </style>
@@ -185,7 +254,7 @@
 <div class="container-fluid bg-grey">
   <div class="row">
     <div class="col-sm-4">
-      <span class="glyphicon glyphicon-globe logo"></span>
+      <span class="glyphicon glyphicon-globe logo slideanim"></span>
     </div>
     <div class="col-sm-8">
       <h2>Our Values</h2>
@@ -200,7 +269,7 @@
   <h2>SERVICES</h2>
   <h4>What we offer</h4>
   <br>
-  <div class="row">
+  <div class="row slideanim">
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-off logo-small"></span>
       <h4>POWER</h4>
@@ -256,7 +325,7 @@
 <div id="portfolio" class="container-fluid text-center bg-grey">
   <h2>Portfolio</h2>
   <h4>What we have created</h4>
-  <div class="row text-center">
+  <div class="row text-center slideanim">
     <div class="col-sm-4">
       <div class="thumbnail">
         <img src="paris.jpg" alt="Paris">
@@ -397,7 +466,7 @@
       <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
       <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
     </div>
-    <div class="col-sm-7">
+    <div class="col-sm-7 slideanim">
       <div class="row">
         <div class="col-sm-6 form-group">
           <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
@@ -443,7 +512,7 @@
     $(".navbar a, footer a[href='#myPage']").on('click', function(event){
 
       //Make sure this.hash has a value before overriding default behavior
-      if (this.hash != "") {
+      if (this.hash !== "") {
 
         // Prevent default anchor click behavior
         event.preventDefault();
@@ -461,8 +530,19 @@
           window.location.hash = hash;
         });
       } // End if
+    }
+  });
+
+  $(window).scroll(function() {
+    $(".slideanim").each(function() {
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+      if (pos < winTop + 600) {
+        $(this).addClass("slide");
+      }
     });
-  })
+  });
 </script>
 </body>
 </html>
