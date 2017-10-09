@@ -9,8 +9,49 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <style>
+      .bg-1 {
+        background: #2d2d30;
+        color: #bdbdbd;
+      }
+      .bg-1 h3 {
+        color: #fff;
+      }
+      .bg-1 p {
+        font-style: italic;
+      }
+      /* Black buttons with extra padding and without rounded borders */
+      .btn {
+        padding: 10px 20px;
+        background-color: #333;
+        color: #f1f1f1;
+        border-radius: 0;
+        transition: .2s;
+      }
+      .btn:hover, .btn:focus {
+        border: 1px solid #333;
+        background-color: #fff;
+        color: #000;
+      }
+      .carousel-inner img {
+        -webkit-filter: grayscale(90%);
+        filter: grayscale(90%); /* make all photos black and white */
+        width: 100%; /* Set width to 100% */
+        margin: auto;
+      }
+      .carousel-caption h3 {
+        color: #fff !important;
+      }
       .container {
         padding: 80px 120px;
+      }
+      /* Remove rounded borders from list */
+      .list-group-item:first-child {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+      }
+      .list-group-item:last-child {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
       }
       .person {
         border: 10px solid transparent;
@@ -22,7 +63,21 @@
       .person:hover {
         border-color: #f1f1f1;
       }
-
+      /* Remove border and add padding to thumbnails */
+      .thumbnail {
+        padding: 0 0 15px 0;
+        border: none;
+        border-radius: 0;
+      }
+      .thumbnail p {
+        margin-top: 15px;
+        color: #555;
+      }
+      @media (max-width: 600px) {
+        .carousel-caption {
+          display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+        }
+      }
     </style>
 
   </head>
@@ -111,6 +166,45 @@
             <p>Bass player</p>
             <p>Loves math</p>
             <p>Member since 1988</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-1">
+      <div class="container">
+        <h3 class="text-center">TOUR DATES</h3>
+        <p class="text-center">Lorem ipsum we'll play you some music.<br> Remember to book your tickets!</p>
+
+        <ul class="list-group">
+          <li class="list-group-item">September <span class="label label-danger">Sold Out!</span></li>
+          <li class="list-group-item">October <span class="label label-danger">Sold Out!</span></li>
+          <li class="list-group-item">November <span class="badge">3</span></li>
+        </ul>
+
+        <div class="row text-center">
+          <div class="col-sm-4">
+            <div class="thumbnail">
+              <img src="paris.jpg" alt="Paris">
+              <p><strong>Paris</strong></p>
+              <p>Fri. 27 November 2015</p>
+              <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="thumbnail">
+              <img src="newyork.jpg" alt="New York">
+              <p><strong>New York</strong></p>
+              <p>Sat. 28 November 2015</p>
+              <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="thumbnail">
+              <img src="sanfran.jpg" alt="San Francisco">
+              <p><strong>San Francisco</strong></p>
+              <p>Sun. 29 November 2015</p>
+              <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
+            </div>
           </div>
         </div>
       </div>
